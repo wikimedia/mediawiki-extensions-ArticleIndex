@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Extension displays index of words in an article.
  * Add tag <aindex></aindex>.
@@ -22,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Josef Martiňák',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleIndex',
 	'descriptionmsg' => 'articleindex-desc',
-	'version' => '0.3'
+	'version' => '0.4.0'
 );
 
 # Register a module
@@ -38,6 +37,7 @@ $wgResourceModules['ext.ArticleIndex'] = array(
 );
 
 $wgAutoloadClasses['ArticleIndexHooks'] = __DIR__ . '/ArticleIndexHooks.php';
+$wgMessagesDirs['ArticleIndex'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['ArticleIndex'] = __DIR__ . '/ArticleIndex.i18n.php';
 $wgHooks['ParserFirstCallInit'][] = 'ArticleIndexHooks::registerParserHook';
 $wgHooks['BeforePageDisplay'][] = 'ArticleIndexHooks::showIndex';
