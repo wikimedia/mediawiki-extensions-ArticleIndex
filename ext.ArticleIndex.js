@@ -23,7 +23,7 @@
 
 		// search and highlight all occurrences of clicked word
 		searchedWords = $( 'span.articleIndexedWord' ).filter( function() {
-			return $( this ).text().toLowerCase() == w.toLowerCase();
+			return $( this ).text().toLowerCase() === w.toLowerCase();
 		} );
 
 		style = 'background-color: #5f7bb7; color: #ffffff; padding: 0px 2px 0px 2px;';
@@ -59,7 +59,7 @@
 	  				// find previous occurrence of the word and jump into
 					prevIndex = 0;
 					searchedWords.map( function (index ) {
-						if ( $( this ).next( 'span.articleIndexNavPrev' ).length == 1 ) {
+						if ( $( this ).next( 'span.articleIndexNavPrev' ).length === 1 ) {
 							prevIndex = index - 1;
 							return $( this );
 						}
@@ -91,7 +91,7 @@
 		  			// find next occurrence of the word and jump into
 					nextIndex = 0;
 					searchedWords.map( function (index ) {
-						if ( $( this ).next( 'span.articleIndexNavPrev' ).length == 1 ) {
+						if ( $( this ).next( 'span.articleIndexNavPrev' ).length === 1 ) {
 							nextIndex = index + 1;
 							return $( this );
 						}
@@ -100,7 +100,7 @@
 						}
 					});
 
-					if ( nextIndex == searchedWords.length ) {
+					if ( nextIndex === searchedWords.length ) {
 						// jump to start
 						$( 'html, body' ).animate( {
 							scrollTop: searchedWords.first().offset().top
