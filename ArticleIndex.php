@@ -19,7 +19,7 @@ exit( 1 );
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'ArticleIndex',
 	'author' => 'Josef Martiňák',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleIndex',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ArticleIndex',
 	'descriptionmsg' => 'articleindex-desc',
 	'version' => '0.4.0'
 );
