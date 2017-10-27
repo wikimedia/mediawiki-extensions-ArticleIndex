@@ -38,6 +38,5 @@ $wgResourceModules['ext.ArticleIndex'] = array(
 
 $wgAutoloadClasses['ArticleIndexHooks'] = __DIR__ . '/ArticleIndexHooks.php';
 $wgMessagesDirs['ArticleIndex'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['ArticleIndex'] = __DIR__ . '/ArticleIndex.i18n.php';
 $wgHooks['ParserFirstCallInit'][] = 'ArticleIndexHooks::registerParserHook';
 $wgHooks['BeforePageDisplay'][] = 'ArticleIndexHooks::showIndex';
