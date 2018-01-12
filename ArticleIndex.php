@@ -1,42 +1,24 @@
 <?php
 /**
  * Extension displays index of words in an article.
- * Add tag <aindex></aindex>.
- * Words in these tags are displayed instead of tag <articleindex/> in alphabet order
- * grouped by first letters.
+ *
+ * Add tag <aindex></aindex>. Words in these tags are displayed
+ * instead of tag <articleindex/> in alphabet order grouped by first letters.
+ *
  * Clicking the word highlights his occurrences and moves page to the first one
- * Navigation buttons on mouseover
+ * Navigation buttons on mouseover.
+ *
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-echo <<<EOT
-	To install my extension, put the following line in LocalSettings.php:
-	require_once( "\$IP/extensions/ArticleIndex/ArticleIndex.php");
-EOT;
-exit( 1 );
+if ( function_exists( 'wfLoadExtension' ) ) {
+	wfLoadExtension( 'ArticleIndex' );
+	// Keep i18n globals so mergeMessageFileList.php doesn't break
+	$wgMessagesDirs['ArticleIndex'] = __DIR__ . '/i18n';
+	wfWarn(
+		'Deprecated PHP entry point used for the ArticleIndex extension. ' .
+		'Please use wfLoadExtension instead, ' .
+		'see https://www.mediawiki.org/wiki/Extension_registration for more details.'
+	);
+	return;
+} else {
+	die( 'This version of the ArticleIndex extension requires MediaWiki 1.29+' );
 }
-
-$wgExtensionCredits['specialpage'][] = array(
-	'name' => 'ArticleIndex',
-	'author' => 'Josef Martiňák',
-	'url' => 'https://www.mediawiki.org/wiki/Extension:ArticleIndex',
-	'descriptionmsg' => 'articleindex-desc',
-	'version' => '0.4.0'
-);
-
-# Register a module
-$wgResourceModules['ext.ArticleIndex'] = array(
-	'styles' => array( 'ext.ArticleIndex.css' ),
-	'scripts' => array( 'ext.ArticleIndex.js' ),
-	'localBasePath' => __DIR__,
-	'remoteExtPath' => 'ArticleIndex',
-	'messages' => array(
-		'articleindex-prev',
-		'articleindex-next',
-		'articleindex-index')
-);
-
-$wgAutoloadClasses['ArticleIndexHooks'] = __DIR__ . '/ArticleIndexHooks.php';
-$wgMessagesDirs['ArticleIndex'] = __DIR__ . '/i18n';
-$wgHooks['ParserFirstCallInit'][] = 'ArticleIndexHooks::registerParserHook';
-$wgHooks['BeforePageDisplay'][] = 'ArticleIndexHooks::showIndex';
