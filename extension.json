@@ -1,9 +1,10 @@
 {
 	"name": "ArticleIndex",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"author": "[https://www.mediawiki.org/wiki/User:Jossmart Josef Martiňák]",
 	"url": "https://www.mediawiki.org/wiki/Extension:ArticleIndex",
 	"descriptionmsg": "articleindex-desc",
+	"license-name": "GPL-3.0-only",
 	"type": "specialpage",
 	"MessagesDirs": {
 		"ArticleIndex": [
