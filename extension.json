@@ -6,6 +6,9 @@
 	"descriptionmsg": "articleindex-desc",
 	"license-name": "GPL-3.0-only",
 	"type": "specialpage",
+	"requires": {
+		"MediaWiki": ">= 1.29.0"
+	},
 	"MessagesDirs": {
 		"ArticleIndex": [
 			"i18n"
