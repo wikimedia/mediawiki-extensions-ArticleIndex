@@ -20,10 +20,10 @@
 	"ResourceModules": {
 		"ext.ArticleIndex": {
 			"styles": [
-				"ext.ArticleIndex.css"
+				"resources/ext.ArticleIndex.css"
 			],
 			"scripts": [
-				"ext.ArticleIndex.js"
+				"resources/ext.ArticleIndex.js"
 			],
 			"messages": [
 				"articleindex-prev",
