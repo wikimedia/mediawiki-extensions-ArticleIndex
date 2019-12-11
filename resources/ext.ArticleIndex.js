@@ -3,15 +3,15 @@
  * Clicking the word highlights his occurrences and moves page to the first one
  * Navigation buttons on mouseenter
  */
+/* eslint-disable no-jquery/no-global-selector */
 
-( function ( mw, $ ) {
+( function () {
 
-	var w, searchedWords, style, navButtons, prevIndex,nextIndex;
+	var w, searchedWords, style, navButtons, prevIndex, nextIndex, delay = 500;
 	// delay for animations
-	var delay = 500;
 
 	$( 'a.articleIndexLink' ).css( 'cursor', 'pointer' );
-	$( 'a.articleIndexLink' ).click( function() {
+	$( 'a.articleIndexLink' ).on( 'click', function () {
 
 		// clicked word
 		w = $( this ).text();
@@ -22,7 +22,7 @@
 		removeNavigation();
 
 		// search and highlight all occurrences of clicked word
-		searchedWords = $( 'span.articleIndexedWord' ).filter( function() {
+		searchedWords = $( 'span.articleIndexedWord' ).filter( function () {
 			return $( this ).text().toLowerCase() === w.toLowerCase();
 		} );
 
@@ -39,11 +39,11 @@
 		// add navigation buttons on indexed word mouseenter
 		navButtons = '';
 		if ( searchedWords.length > 1 ) {
-			navButtons = "<span class='articleIndexNavPrev'>" + mw.msg( 'articleindex-prev' ) + "</span>";
-			navButtons += "<span class='articleIndexNavNext'>" + mw.msg( 'articleindex-next' ) + "</span>";
+			navButtons = "<span class='articleIndexNavPrev'>" + mw.msg( 'articleindex-prev' ) + '</span>';
+			navButtons += "<span class='articleIndexNavNext'>" + mw.msg( 'articleindex-next' ) + '</span>';
 		}
-		navButtons += "<span class='articleIndexNavIndex'>" + mw.msg( 'articleindex-index' ) + "</span>";
-		searchedWords.mouseenter( function() {
+		navButtons += "<span class='articleIndexNavIndex'>" + mw.msg( 'articleindex-index' ) + '</span>';
+		searchedWords.mouseenter( function () {
 
 			// mouseentered word
 			w = $( this ).text();
@@ -55,26 +55,24 @@
 			// add onclick on PREV button
 			if ( searchedWords.length > 1 ) {
 				$( 'span.articleIndexNavPrev' ).css( 'cursor', 'pointer' );
-				$( 'span.articleIndexNavPrev' ).click( function() {
-	  				// find previous occurrence of the word and jump into
+				$( 'span.articleIndexNavPrev' ).on( 'click', function () {
+					// find previous occurrence of the word and jump into
 					prevIndex = 0;
-					searchedWords.map( function (index ) {
+					searchedWords.map( function ( index ) {
 						if ( $( this ).next( 'span.articleIndexNavPrev' ).length === 1 ) {
 							prevIndex = index - 1;
 							return $( this );
-						}
-						else {
+						} else {
 							return null;
 						}
-					});
+					} );
 
 					if ( prevIndex < 0 ) {
 						// jump to end
 						$( 'html, body' ).animate( {
 							scrollTop: searchedWords.last().offset().top
 						}, delay );
-					}
-					else {
+					} else {
 						// jump to previous
 						$( 'html, body' ).animate( {
 							scrollTop: searchedWords.eq( prevIndex ).offset().top
@@ -87,26 +85,24 @@
 			// add onclick on NEXT button
 			if ( searchedWords.length > 1 ) {
 				$( 'span.articleIndexNavNext' ).css( 'cursor', 'pointer' );
-				$( 'span.articleIndexNavNext' ).click( function() {
-		  			// find next occurrence of the word and jump into
+				$( 'span.articleIndexNavNext' ).on( 'click', function () {
+					// find next occurrence of the word and jump into
 					nextIndex = 0;
-					searchedWords.map( function (index ) {
+					searchedWords.map( function ( index ) {
 						if ( $( this ).next( 'span.articleIndexNavPrev' ).length === 1 ) {
 							nextIndex = index + 1;
 							return $( this );
-						}
-						else {
+						} else {
 							return null;
 						}
-					});
+					} );
 
 					if ( nextIndex === searchedWords.length ) {
 						// jump to start
 						$( 'html, body' ).animate( {
 							scrollTop: searchedWords.first().offset().top
 						}, delay );
-					}
-					else {
+					} else {
 						// jump to next
 						$( 'html, body' ).animate( {
 							scrollTop: searchedWords.eq( nextIndex ).offset().top
@@ -118,8 +114,8 @@
 
 			// add onclick on INDEX buttons
 			$( 'span.articleIndexNavIndex' ).css( 'cursor', 'pointer' );
-			$( 'span.articleIndexNavIndex' ).click( function() {
-	  			// jump to the index
+			$( 'span.articleIndexNavIndex' ).on( 'click', function () {
+			// jump to the index
 				removeNavigation();
 				$( 'html, body' ).animate( {
 					scrollTop: $( 'a.articleIndexLink' ).first().offset().top
@@ -139,4 +135,4 @@
 		$( 'span.articleIndexNavIndex' ).remove();
 	}
 
-}( mediaWiki, jQuery ) );
+}() );
