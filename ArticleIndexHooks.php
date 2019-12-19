@@ -12,8 +12,8 @@ class ArticleIndexHooks {
 	 * @return Boolean: true
 	 */
 	public static function registerParserHook( &$parser ) {
-		$parser->setHook( 'aindex', array( 'ArticleIndexHooks', 'aindexRender' ) );
-		$parser->setHook( 'articleindex', array( 'ArticleIndexHooks', 'articleindexRender' ) );
+		$parser->setHook( 'aindex', [ 'ArticleIndexHooks', 'aindexRender' ] );
+		$parser->setHook( 'articleindex', [ 'ArticleIndexHooks', 'articleindexRender' ] );
 		return true;
 	}
 
@@ -52,7 +52,7 @@ class ArticleIndexHooks {
 			// get tagged words
 			$pattern = "/<span class='articleIndexedWord'>([^<]*)<\/span>/";
 			preg_match_all( $pattern, $out->mBodytext, $matches, PREG_SET_ORDER );
-			$words = array();
+			$words = [];
 
 			foreach ( $matches as $m ) {
 				// convert to lowercase with first letter capitalized
