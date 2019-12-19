@@ -45,7 +45,6 @@ class ArticleIndexHooks {
 	 * @param object $skin instance of Skin, unused
 	 */
 	public static function showIndex( &$out, &$skin ) {
-
 		if ( $out->isArticle() && strpos( $out->mBodytext, "<span class='articleIndexedWord'>" ) !== false ) {
 			$out->addModules( 'ext.ArticleIndex' );
 
@@ -62,7 +61,7 @@ class ArticleIndexHooks {
 				array_push( $words, $displayedWord );
 			}
 			$words = array_unique( $words );
-			setlocale( LC_ALL, 'cs_CZ');
+			setlocale( LC_ALL, 'cs_CZ' );
 			usort( $words, 'strcoll' );
 
 			// show the index
@@ -70,7 +69,7 @@ class ArticleIndexHooks {
 			$index = '';
 			foreach ( $words as $w ) {
 				if ( mb_substr( $w, 0, 1, 'UTF-8' ) != $prev_first_letter ) {
-					$index .= '<strong>:: ' . mb_substr( $w, 0, 1, 'UTF-8'). '</strong><br/>';
+					$index .= '<strong>:: ' . mb_substr( $w, 0, 1, 'UTF-8' ). '</strong><br/>';
 				}
 				$index .= "<a class='articleIndexLink'>$w</a><br/>";
 				$prev_first_letter = mb_substr( $w, 0, 1, 'UTF-8' );
