@@ -69,7 +69,7 @@ class ArticleIndexHooks {
 			$index = '';
 			foreach ( $words as $w ) {
 				if ( mb_substr( $w, 0, 1, 'UTF-8' ) != $prev_first_letter ) {
-					$index .= '<strong>:: ' . mb_substr( $w, 0, 1, 'UTF-8' ). '</strong><br/>';
+					$index .= '<strong>:: ' . mb_substr( $w, 0, 1, 'UTF-8' ) . '</strong><br/>';
 				}
 				$index .= "<a class='articleIndexLink'>$w</a><br/>";
 				$prev_first_letter = mb_substr( $w, 0, 1, 'UTF-8' );
