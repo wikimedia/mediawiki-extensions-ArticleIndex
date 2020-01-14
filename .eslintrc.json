@@ -9,6 +9,7 @@
 		"OO": false
 	},
 	"rules": {
+		"no-jquery/no-bind": "off",
 		"no-jquery/no-unbind": "off",
 		"no-jquery/variable-pattern": "off",
 		"no-use-before-define": "off"
