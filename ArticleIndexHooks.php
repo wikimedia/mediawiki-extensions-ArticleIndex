@@ -8,7 +8,7 @@ class ArticleIndexHooks {
 
 	/**
 	 * Set up the parser hooks
-	 * @param object $parser instance of OutputPage
+	 * @param object &$parser instance of OutputPage
 	 * @return Boolean true
 	 */
 	public static function registerParserHook( &$parser ) {
@@ -41,8 +41,8 @@ class ArticleIndexHooks {
 
 	/**
 	 * Place the index
-	 * @param object $out instance of OutputPage
-	 * @param object $skin instance of Skin, unused
+	 * @param object &$out instance of OutputPage
+	 * @param object &$skin instance of Skin, unused
 	 */
 	public static function showIndex( &$out, &$skin ) {
 		if ( $out->isArticle() && strpos( $out->mBodytext, "<span class='articleIndexedWord'>" ) !== false ) {
