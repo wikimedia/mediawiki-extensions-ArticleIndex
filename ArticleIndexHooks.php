@@ -9,7 +9,7 @@ class ArticleIndexHooks {
 	/**
 	 * Set up the parser hooks
 	 * @param object &$parser instance of OutputPage
-	 * @return Boolean true
+	 * @return bool true
 	 */
 	public static function registerParserHook( &$parser ) {
 		$parser->setHook( 'aindex', [ 'ArticleIndexHooks', 'aindexRender' ] );
