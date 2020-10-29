@@ -43,6 +43,7 @@ class ArticleIndexHooks {
 	 * Place the index
 	 * @param object &$out instance of OutputPage
 	 * @param object &$skin instance of Skin, unused
+	 * @return true
 	 */
 	public static function showIndex( &$out, &$skin ) {
 		if ( $out->isArticle() && strpos( $out->mBodytext, "<span class='articleIndexedWord'>" ) !== false ) {
