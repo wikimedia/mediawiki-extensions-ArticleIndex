@@ -22,7 +22,7 @@ class ArticleIndexHooks {
 	 * @param string $input user-supplied input, unused
 	 * @param array $args user-supplied arguments, unused
 	 * @param object $parser instance of Parser, unused
-	 * @return String HTML
+	 * @return string HTML
 	 */
 	public static function aindexRender( $input, $args, $parser ) {
 		return "<span class='articleIndexedWord'>" . htmlspecialchars( $input ) . "</span>";
@@ -33,7 +33,7 @@ class ArticleIndexHooks {
 	 * @param string $input user-supplied input, unused
 	 * @param array $args user-supplied arguments, unused
 	 * @param object $parser instance of Parser, unused
-	 * @return String HTML
+	 * @return string HTML
 	 */
 	public static function articleindexRender( $input, $args, $parser ) {
 		return "<div class='articleindex'></div>";
