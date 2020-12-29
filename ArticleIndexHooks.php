@@ -8,20 +8,18 @@ class ArticleIndexHooks {
 
 	/**
 	 * Set up the parser hooks
-	 * @param object &$parser instance of OutputPage
-	 * @return bool true
+	 * @param Parser $parser
 	 */
-	public static function registerParserHook( &$parser ) {
+	public static function registerParserHook( $parser ) {
 		$parser->setHook( 'aindex', [ 'ArticleIndexHooks', 'aindexRender' ] );
 		$parser->setHook( 'articleindex', [ 'ArticleIndexHooks', 'articleindexRender' ] );
-		return true;
 	}
 
 	/**
 	 * Callback function for registerParserHook
 	 * @param string $input user-supplied input, unused
 	 * @param array $args user-supplied arguments, unused
-	 * @param object $parser instance of Parser, unused
+	 * @param Parser $parser unused
 	 * @return string HTML
 	 */
 	public static function aindexRender( $input, $args, $parser ) {
@@ -32,7 +30,7 @@ class ArticleIndexHooks {
 	 * Callback function for registerParserHook
 	 * @param string $input user-supplied input, unused
 	 * @param array $args user-supplied arguments, unused
-	 * @param object $parser instance of Parser, unused
+	 * @param Parser $parser unused
 	 * @return string HTML
 	 */
 	public static function articleindexRender( $input, $args, $parser ) {
@@ -41,11 +39,10 @@ class ArticleIndexHooks {
 
 	/**
 	 * Place the index
-	 * @param object &$out instance of OutputPage
-	 * @param object &$skin instance of Skin, unused
-	 * @return true
+	 * @param OutputPage $out
+	 * @param Skin $skin unused
 	 */
-	public static function showIndex( &$out, &$skin ) {
+	public static function showIndex( $out, $skin ) {
 		if ( $out->isArticle() && strpos( $out->mBodytext, "<span class='articleIndexedWord'>" ) !== false ) {
 			$out->addModules( 'ext.ArticleIndex' );
 
@@ -77,6 +74,5 @@ class ArticleIndexHooks {
 			}
 			$out->mBodytext = preg_replace( "/<div class='articleindex'><\/div>/", $index, $out->mBodytext );
 		}
-		return true;
 	}
 }
