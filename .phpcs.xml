@@ -2,6 +2,8 @@
 <ruleset>
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingReturn" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.ObjectTypeHintParam" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.UppercasePrimitiveStringReturn" />
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php"/>
