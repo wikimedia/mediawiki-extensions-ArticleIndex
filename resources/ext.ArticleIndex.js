@@ -7,7 +7,7 @@
 
 ( function () {
 
-	var w, searchedWords, style, navButtons, prevIndex, nextIndex, delay = 500;
+	let w, searchedWords, style, navButtons, prevIndex, nextIndex, delay = 500;
 	// delay for animations
 
 	$( 'a.articleIndexLink' ).css( 'cursor', 'pointer' );
@@ -55,7 +55,7 @@
 			// add onclick on PREV button
 			if ( searchedWords.length > 1 ) {
 				$( 'span.articleIndexNavPrev' ).css( 'cursor', 'pointer' );
-				$( 'span.articleIndexNavPrev' ).on( 'click', function () {
+				$( 'span.articleIndexNavPrev' ).on( 'click', () => {
 					// find previous occurrence of the word and jump into
 					prevIndex = 0;
 					searchedWords.map( function ( index ) {
@@ -85,7 +85,7 @@
 			// add onclick on NEXT button
 			if ( searchedWords.length > 1 ) {
 				$( 'span.articleIndexNavNext' ).css( 'cursor', 'pointer' );
-				$( 'span.articleIndexNavNext' ).on( 'click', function () {
+				$( 'span.articleIndexNavNext' ).on( 'click', () => {
 					// find next occurrence of the word and jump into
 					nextIndex = 0;
 					searchedWords.map( function ( index ) {
@@ -114,7 +114,7 @@
 
 			// add onclick on INDEX buttons
 			$( 'span.articleIndexNavIndex' ).css( 'cursor', 'pointer' );
-			$( 'span.articleIndexNavIndex' ).on( 'click', function () {
+			$( 'span.articleIndexNavIndex' ).on( 'click', () => {
 			// jump to the index
 				removeNavigation();
 				$( 'html, body' ).animate( {
